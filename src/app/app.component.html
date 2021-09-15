@@ -2,19 +2,19 @@
   <div class="container collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/home" routerLinkActive="active" >Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/documents" routerLinkActive="active">Docs</a>
       </li>
       <li class="nav-item dropdown">
         <div ngbDropdown class="d-inline-block dropdown-links">
-          <button class="btn btn-outline-primary" id="proposalDropdown"
-          ngbDropdownToggle>
-          Proposals
+          <button class="btn btn-outline-primary" id="proposalDropdown" ngbDropdownToggle>
+            Proposals
           </button>
           <div class="dropdown-menu" ngbDropdownMenu>
-            <a class="dropdown-item" routerLink="/proposals" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}" >Proposals</a>
+            <a class="dropdown-item" routerLink="/proposals" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true}">Proposals</a>
             <a class="dropdown-item" routerLink="/proposals/new" routerLinkActive="active">New Proposal</a>
           </div>
         </div>
@@ -25,15 +25,6 @@
     </form>
   </div>
 </nav>
-
-
-<h1>Navigation</h1>
-
-<a routerLink="/home">Home</a>
-<br/>
-<a routerLink="/documents">Documents</a>
-<br/>
-<a routerLink="/proposals">Proposals</a>
-<br/>
-<a routerLink="/proposals/new">New Proposal</a>
-<router-outlet></router-outlet>
+<div class="app-body">
+  <router-outlet></router-outlet>
+</div>
