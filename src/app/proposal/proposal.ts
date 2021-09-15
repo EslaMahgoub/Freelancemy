@@ -4,8 +4,8 @@ export class Proposal {
     public customer?: string,
     public portfolio_url: string = 'http//',
     public tools?: string,
-    public estimated_hours?: number,
-    public hourly_rate?: number,
+    public estimated_hours: number = 0,
+    public hourly_rate: number = 0,
     public weeks_to_complete?: number,
     public client_email?: string,
   ) {}
