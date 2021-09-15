@@ -1,0 +1,15 @@
+<h1>Proposal List</h1>
+
+<div *ngFor="let proposal of proposals">
+  
+  <h3>{{proposal.id}} - {{ proposal.customer }}</h3>
+  <em>Tools - {{ proposal.tools }}</em>
+  <div>
+  <a href="{{ proposal.portfolio_url }}"> Portofolio Link </a>
+  </div>
+  <p>Estimated hours: {{ proposal.estimated_hours }}</p>
+  <p>Hourly Rate: {{ proposal.hourly_rate }}</p>
+  <p>Weeks To Complete: {{ proposal.weeks_to_complete }}</p>
+  <p>Client Email: {{ proposal.client_email }}</p>
+  <hr>
+</div>
