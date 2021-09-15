@@ -1,7 +1,17 @@
-<h1>Proposal List</h1>
-
-<div *ngFor="let proposal of proposals">
-  
-  <a routerLink="/proposal/{{proposal.id}}"> - {{ proposal.customer }}
-  Tools - {{ proposal.tools }} </a>
+<div class="container">
+  <div class="list-group">
+    <a class="list-group-item list-group-item-action flex-column align-items-start active">
+      <h1>Proposal List</h1>
+    </a>
+    <span *ngFor="let proposal of proposals"
+      class="list-group-item list-group-item-action flex-column align-items-start">
+      <a routerLink="/proposal/{{proposal.id}}" class="proposal-link">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{proposal.customer}}</h5>
+          <small class="text-muted">{{ proposal.weeks_to_complete }} week</small>
+        </div>
+        <p class="mb-1">{{proposal.hourly_rate * proposal.estimated_hours | currency:'USD':true:'.0'}}</p>
+      </a>
+    </span>
+  </div>
 </div>
