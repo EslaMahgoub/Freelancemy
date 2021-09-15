@@ -6,3 +6,26 @@
   color:white;
 
 }
+
+.nav-styles{
+  background-color: #1a1b22;
+}
+
+.nav-styles a{
+  color: white;
+}
+
+.nav-styles a:hover{
+  color: antiquewhite;
+}
+
+.nav-link.active{
+  color: #e64758 !important;
+}
+
+.dropdown-links a {
+  color: #1a1b22;
+}
+.dropdown-links a:hover {
+  color: #252830;
+}
