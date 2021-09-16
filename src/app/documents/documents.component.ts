@@ -1,36 +1,33 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { Observable, timer } from 'rxjs';
 import { Document } from "./document";
+import { DocumentService } from "./document.service";
 
 @Component({
   selector: "documents",
   templateUrl: "documents.component.html",
-  styleUrls: ['document.component.css']
+  styleUrls: ['document.component.css'],
+  providers: [DocumentService]
 })
 
-export class DocumentsComponent {
+export class DocumentsComponent implements OnInit {
   pageTitle:string = "Freelancemy | Documents";
-  documents: Document[] = [
-    {
-    title: "Ruby on rails proposal",
-    description: "Ruby on rails proposal",
-    file_url: "http://google.com",
-    updated_at: "30-07-1993",
-    image_url: "data:image/png;base64,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",
-    },
-    {
-      title: "Angular proposal",
-      description: "Angular proposal",
-      file_url: "http://google.com",
-      updated_at: "30-07-1995",
-      image_url: "https://cdn.pixabay.com/photo/2017/10/31/22/46/freelance-2906725_1280.png",
-      },
-      {
-        title: "React proposal",
-        description: "React proposal",
-        file_url: "http://google.com",
-        updated_at: "30-07-1997",
-        image_url: "https://image.freepik.com/free-vector/cartoon-woman-freelance_18591-16800.jpg",
-        },
-  
-  ];
+  documents: Document[];
+  errorMessage:string;
+
+  constructor(
+    private documentService: DocumentService
+    ) {}
+
+  ngOnInit(): void {
+    let timer$ = timer(0, 5000); // make call to api every 5000 ms => 5 sec
+    timer$.subscribe(() => this.getDocuments());
+  }
+  getDocuments(){
+    this.documentService.getDocuments()
+        .subscribe(
+          documents => this.documents =  documents,  // Response
+          error => this.errorMessage = <any>error
+        )
+  }
 }; 
