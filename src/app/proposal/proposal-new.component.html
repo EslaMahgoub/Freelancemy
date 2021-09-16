@@ -3,7 +3,7 @@
     <div class="col-md-6">
       <div>
         <h1> Create a Proposal </h1>
-        <form #proposalForm="ngForm">
+        <form (ngSubmit)="create_proposal(proposal)" #proposalForm="ngForm">
           <div class='form-group'>
             <label for="customer">Customer Name: </label>
             <input type="text" id="customer" class="form-control" placeholder="ABC Name" required name="customer"
@@ -65,6 +65,13 @@
             <input type="text" id="client_email" class="form-control" placeholder="Client Email" name="client_email"
               #client_email='ngModel' [(ngModel)]="proposal.client_email">
           </div>
+          <button type="submit" 
+          class="btn btn-outline-info btn-lg"
+          [disabled]="!proposalForm.form.valid"
+          [hidden]="submitted"
+          >
+            Create a Proposal
+          </button>
         </form>
       </div>
     </div>

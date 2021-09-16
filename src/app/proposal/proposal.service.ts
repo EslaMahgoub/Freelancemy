@@ -24,6 +24,18 @@ export class ProposalService {
   getProposal(id: number): Observable<Proposal> {
     return this.httpClient.get<Proposal>(this.proposalsUrl + '/' + id)
   }
+
+  createProposal(proposal: Proposal): Observable<Proposal>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
+    };
+    return this.httpClient.post<Proposal>(this.proposalsUrl, proposal, httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
   
   handleError(error: any) {
     let errorMessage = '';
