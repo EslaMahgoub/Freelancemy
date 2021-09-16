@@ -6,6 +6,7 @@
     <img class="card-img-top" src="{{ document.image_url }}" alt="Card image cap" height="400px">
     <div class="card-header">
       <h3>{{ document.title }}</h3>
+      <p class="card-text"><small class="text-muted">Last updated: {{ document.updated_at | date}}</small></p> 
     </div>
     <div class="card-body">
 
@@ -15,7 +16,7 @@
       </div>
     </div>
     <div class="card-footer">
-      <p>{{ document.updated_at }}</p>
+      
     </div>
   </div>
 </div>
