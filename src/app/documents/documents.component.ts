@@ -26,7 +26,7 @@ export class DocumentsComponent implements OnInit {
   getDocuments(){
     this.documentService.getDocuments()
         .subscribe(
-          documents => this.documents =  documents,  // Response
+          data => this.documents =  data,
           error => this.errorMessage = <any>error
         )
   }
