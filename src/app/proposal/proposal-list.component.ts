@@ -1,19 +1,40 @@
 import { Component } from "@angular/core";
-import {Proposal} from "./proposal";
+import {Router} from '@angular/router';
+import { Observable, timer } from 'rxjs';
+import { Proposal } from "./proposal";
+import { ProposalService } from "./proposal.service";
+
+
 @Component({
   selector: "proposal-list",
   templateUrl: "proposal-list.component.html",
-  styleUrls: ["proposal-list.component.css"]
+  styleUrls: ["proposal-list.component.css"],
+  providers: [ProposalService]
 })
 
 export class ProposalListComponent {
   pageTitle:string = "Freelancemy | Proposal List";
-  prposalOne: Proposal = new Proposal(15, 'My Company', 'https://github.com/EslaMahgoub/', 'Ruby On Rails', 
-  150, 120, 15, "eslamkhaledtawfik@gmail.com")
-  prposalTwo: Proposal = new Proposal(12, 'ASD Company', 'https://github.com/EslaMahgoub/', 'Ruby On Rails', 
-  180, 150, 15, "eslamkhaledtawfik@gmail.com")
-  prposalThree: Proposal = new Proposal(18, 'XYZ Company', 'https://github.com/EslaMahgoub/', 'Ruby On Rails', 
-  120, 140, 20, "eslamkhaledtawfik@gmail.com")
+  proposals: Proposal[];
+  errorMessage:string;
+  constructor(
+    private proposalService: ProposalService,
+    private router: Router
+    ) {}
 
-  proposals: Proposal[] = [this.prposalOne, this.prposalTwo, this.prposalThree]
+    ngOnInit(): void {
+      let timer$ = timer(0, 5000); // make call to api every 5000 ms => 5 sec
+      timer$.subscribe(() => this.getProposals());
+    }
+    getProposals(){
+      this.proposalService.getProposals()
+          .subscribe(
+            data => this.proposals =  data,
+            error => this.errorMessage = <any>error
+          )
+    }
+
+    gotToShow(proposal:Proposal): void {
+      let link = ['/proposal', proposal.id];
+      this.router.navigate(link);
+    }
 }; 
