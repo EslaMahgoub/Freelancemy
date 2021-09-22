@@ -1,5 +1,5 @@
 # Freelancemy
-
+Freelance app for submitting proposals and documetns of freelancers that is using Ruby Api as backend and angular for front end
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.5.
 
 ## Development server
